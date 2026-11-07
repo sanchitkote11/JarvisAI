@@ -33,7 +33,7 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
 
     companion object {
         private const val REQ_MIC = 1
-        private const val MODEL = "gemini-2.5-flash"
+        private const val MODEL = "NEW_MODEL_NAME"
         private const val KEY_API = "api_key"
         private const val SYSTEM_PROMPT =
             "You are JARVIS, a witty, caring male best friend and voice assistant. " +
