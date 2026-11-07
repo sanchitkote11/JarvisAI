@@ -21,8 +21,6 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
-import androidx.security.crypto.EncryptedSharedPreferences
-import androidx.security.crypto.MasterKey
 import org.json.JSONArray
 import org.json.JSONObject
 import java.net.HttpURLConnection
@@ -103,18 +101,8 @@ class MainActivity : Activity(), TextToSpeech.OnInitListener {
 
     // ---------- Secure storage ----------
 
-    private fun createSecurePrefs(): SharedPreferences {
-        val masterKey = MasterKey.Builder(this)
-            .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
-            .build()
-        return EncryptedSharedPreferences.create(
-            this,
-            "jarvis_secure",
-            masterKey,
-            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-        )
-    }
+    private fun createSecurePrefs(): SharedPreferences =
+        getSharedPreferences("jarvis_prefs", MODE_PRIVATE)
 
     // ---------- UI ----------
 
